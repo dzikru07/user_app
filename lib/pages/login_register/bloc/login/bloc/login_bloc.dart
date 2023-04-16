@@ -17,19 +17,15 @@ class LoginBloc extends Bloc<InitialLoginEvent, LoginState> {
     LoginRegisterViewModels servicePage = LoginRegisterViewModels();
     on<InitialLoginEvent>((event, emit) async {
       // TODO: implement event handler
+      emit(LoginLoadingState());
+      final response = await servicePage.postLogin(event.loginForm);
       try {
-        emit(LoginLoadingState());
-        final response = await servicePage.postLogin(event.loginForm);
-        if (response.data["status"]["kode"] == "success") {
-          print(response.data["status"]["kode"]);
+        if (response["status"]["kode"] == "success") {
           var userData = LoginModels.fromJson(response.data);
           emit(LoginSuccessState(userData));
-        } else {
-          var userData = ErrorLoginModels.fromJson(response.response);
-          emit(LoginErrorState(userData));
         }
       } catch (e) {
-        emit(LoginErrorNetworkState(e.toString()));
+        emit(LoginErrorState("Email/No. HP atau Password tidak sesuai"));
       }
     });
   }

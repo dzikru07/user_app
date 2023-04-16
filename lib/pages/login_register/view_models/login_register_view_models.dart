@@ -28,10 +28,10 @@ class LoginRegisterViewModels {
       'password': data.password,
     });
     try {
-      Response response =
+      Response respon =
           await _apiService.postApiDataFormData('/login', formData);
       // var data = LoginModels.fromJson(response.data);
-      return response;
+      return respon;
     } on DioError catch (e) {
       return e.response;
     }

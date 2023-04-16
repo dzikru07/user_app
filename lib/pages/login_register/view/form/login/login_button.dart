@@ -32,7 +32,6 @@ class _LoginButtonState extends State<LoginButton> {
             : widget.width / 5,
         child: InkWell(
           onTap: () {
-            print(widget.loginLocalData.state.toJson());
             if (widget.loginLocalData.state.username == "" ||
                 widget.loginLocalData.state.password == "") {
               AlertApp().mainSnackbar(context, "Lengkapi data!");

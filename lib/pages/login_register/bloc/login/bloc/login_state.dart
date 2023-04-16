@@ -9,7 +9,7 @@ class LoginState extends Equatable {
 class LoginInitial extends LoginState {}
 
 class LoginErrorState extends LoginState {
-  ErrorLoginModels errorData;
+  String errorData;
 
   LoginErrorState(this.errorData);
 }

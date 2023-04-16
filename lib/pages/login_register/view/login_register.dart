@@ -139,9 +139,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                                   // TODO: implement listener
                                   if (state is LoginErrorState) {
                                     AlertApp().mainSnackbar(
-                                        context,
-                                        state.errorData.status.keterangan
-                                            .toString());
+                                        context, state.errorData.toString());
                                   } else if (state is LoginErrorNetworkState) {
                                     AlertApp().mainSnackbar(
                                         context, state.message.toString());
