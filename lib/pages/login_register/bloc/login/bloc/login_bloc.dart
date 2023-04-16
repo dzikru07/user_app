@@ -20,12 +20,14 @@ class LoginBloc extends Bloc<InitialLoginEvent, LoginState> {
       emit(LoginLoadingState());
       final response = await servicePage.postLogin(event.loginForm);
       try {
-        if (response["status"]["kode"] == "success") {
+        if (response.data["status"]["kode"] == "success") {
           var userData = LoginModels.fromJson(response.data);
           emit(LoginSuccessState(userData));
+        } else {
+          emit(LoginErrorState("Email/No. HP atau Password tidak sesuai"));
         }
       } catch (e) {
-        emit(LoginErrorState("Email/No. HP atau Password tidak sesuai"));
+        emit(LoginErrorNetworkState(e.toString()));
       }
     });
   }
