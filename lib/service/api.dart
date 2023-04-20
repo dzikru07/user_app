@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  final String _url = "https://grinder.koffiesoft.com";
+  final String _url = "https://";
   var _dio = Dio();
 
   _setHeaders() => {
